@@ -3,14 +3,20 @@ import olxlogo from "../../assets/olxlogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import sell from "../../assets/sell.png";
-import {auth,provider} from "../../Components/Config/Firebase"
+import {auth,provider} from "../Config/Firebase"
 import './NavBar.css'
 import { signInWithPopup } from "firebase/auth";
 import Title from "../Title/Title";
+import Banner from "../Config/Banner/Banner";
+import Footer from "../Footer/Footer";
+import BottomFooter from "../Config/BottomFooter/BottomFooter";
+
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(false);
   const [username, setUsername] = useState("");
   // const navigate = useNavigate();
@@ -67,11 +73,15 @@ const NavBar = () => {
           </div>
         </div>
         <div className="sellbutton">
-          <img src={sell} alt="" />
+          <img src={sell} alt="" onClick={() => navigate("/sell")}/>
         </div>
        
       </div>
-        <Title/>
+      <Title/>
+      <Banner/>
+      <Footer/>
+      <BottomFooter/>
+       
       </>
      
       
@@ -103,7 +113,11 @@ const NavBar = () => {
           <img src={sell} alt="" />
         </div>
       </div>
-        <Title/>
+      <Title/>
+      <Banner/>
+      
+      <Footer/> 
+      <BottomFooter/>
       </>
  
 )
